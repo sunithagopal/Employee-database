@@ -1,0 +1,116 @@
+package examples;
+import java.util.*;
+class Employee {
+	HashSet<Employeedetails> empset=new HashSet<Employeedetails>();
+
+	Employeedetails emp1=new Employeedetails("Sunitha",101,21,4499777,"20/59 south st thiruchendure","34/5 navaloor chennai","sunithagopal@gamail.com");
+	Employeedetails emp2=new Employeedetails("Divya",102,28,75677890,"2/59 north st madurai","4/5 navaloor chennai","divya5@gamail.com");
+	Employeedetails emp3=new Employeedetails("Krithikka",103,20,780095,"89, south st thiruchendure","34/50 tharamani chennai","krithika56l@gamail.com");
+	Employeedetails emp4=new Employeedetails("Arun",104,25,786755776,"20south st thiruchendure","30/5 thambaram chennai","arun109@gamail.com");
+	Employeedetails emp5=new Employeedetails("Siva",105,30,78459009,"2/59 south st trichy","3/5 solinganaloor chennai","siva108gamail.com");
+Scanner sc=new Scanner(System.in);
+boolean found=false;
+String name;
+int id;
+int age;
+long phoneno;
+String permanentaddress;
+String currentaddress;
+String emailid;
+public Employee() {
+	empset.add(emp1);
+	empset.add(emp2);
+	empset.add(emp3);
+	empset.add(emp4);
+	empset.add(emp5);
+}
+public void listEmps() {
+	for(Employeedetails emp:empset) {
+		System.out.println(emp);
+	}
+}
+public void viewOneEmps() {
+	System.out.println("Enter the ID:");
+	id=sc.nextInt();
+	for(Employeedetails emp:empset) {
+		System.out.println("sunitha");
+		
+		if(emp.getId()==id) {
+			System.out.println(emp);
+			found=true;
+		}
+	}
+	if(!found) {
+		System.out.println("Employee with this not found");
+	}
+}
+
+}
+class Employeedetails{
+	private String name;
+	private int id;
+	private int age;
+	private long phoneno;
+	private String permanentaddress;
+	private String currentaddress;
+	private String emailid;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name=name;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id=id;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age=age;
+	}
+	public long getPhoneno() {
+		return phoneno;
+	}
+	public void setPhoneno(long phoneno) {
+		this.phoneno=phoneno;
+		
+	}
+	public String getPermanentaddress() {
+		return permanentaddress;
+	}
+	public void setPermanentaddress(String permanentaddress) {
+		this.permanentaddress=permanentaddress;
+	}
+	public String getCurrentaddress() {
+		return currentaddress;
+	}
+	public void setCurrentaddress(String currentaddress) {
+		this.currentaddress=currentaddress;
+	}
+	public String getEmailId() {
+		return emailid;
+	}
+	public void setEmailId(String emailid) {
+		this.emailid=emailid;
+	}
+	//override
+	public String toString() {
+		return "Employee [ name="+name+",id="+id+",age="+age+",phoneno="+phoneno+",permanentaddress="+permanentaddress+",currentaddress="+currentaddress+",emailid="+emailid+"]";
+	}
+	public Employeedetails(String name,int id,int  age,long phoneno,String permanentaddress,String currentaddress,String emailid) {
+		super();
+		this.name=name;
+		this.id=id;
+		this.age=age;
+		this.phoneno=phoneno;
+		this.permanentaddress=permanentaddress;
+		this.currentaddress=currentaddress;
+		this.emailid=emailid;
+		
+	}
+
+
