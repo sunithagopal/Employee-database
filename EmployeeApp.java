@@ -26,9 +26,6 @@ class Empdetails{
 		
 		
 	}
-	public Empdetails() {
-	
-	}
 
 	
 	public String getEname() {
