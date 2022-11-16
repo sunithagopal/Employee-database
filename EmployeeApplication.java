@@ -120,10 +120,8 @@ for(phonevalid=0;phonevalid<=5;phonevalid++) {
 System.out.println("Enter Employee Salary");
 try {
 				int salary=emp1.nextInt();
-				emp1.nextLine();}
-catch(InputMismatchException e) {
-	System.out.println("Your salary format is mismatch");
-}
+				emp1.nextLine();
+
 				emp1.nextLine();
 				System.out.println("Enter Employee Permanent Address");
 				String permanentaddress=emp1.nextLine();
@@ -147,6 +145,10 @@ catch(InputMismatchException e) {
 				
 				list.add(new EmployeeDetails(name,eid,phoneno,salary,permanentaddress,currentaddress,email));
 				break;
+			}
+					catch(InputMismatchException e) {
+	System.out.println("Your salary format is mismatch");
+}
 				
 				
 			case 2:
