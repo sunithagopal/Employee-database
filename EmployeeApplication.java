@@ -51,11 +51,13 @@ class EmployeeDetails{
 	}
 	}
 
+
+class EmailValidationException extends Exception{
 	
+}
 
-public class EmployeeApplication {
-	private static final int salary = 0;
 
+public class EmployeeApplication   {
 
 
 
@@ -67,7 +69,7 @@ public class EmployeeApplication {
 
 
 
-	public static void main(String [] args) {
+	public static void main(String [] args) throws EmailValidationException {
 		
 		UUID uuid=UUID.randomUUID();
 		String uuidAsString=uuid.toString();
@@ -118,18 +120,33 @@ for(phonevalid=0;phonevalid<=5;phonevalid++) {
 					}
 }
 System.out.println("Enter Employee Salary");
-try {
+
 				int salary=emp1.nextInt();
 				emp1.nextLine();
+
 
 				emp1.nextLine();
 				System.out.println("Enter Employee Permanent Address");
 				String permanentaddress=emp1.nextLine();
 				System.out.println("Enter Employee Current Address");
-				String currentaddress=emp1.nextLine();
+		     String currentaddress=emp1.nextLine();
+		     
+			//String email=emp1.nextLine();
+			System.out.println("Enter the email");
 			String email=emp1.nextLine();
+
+			try {
+			boolean s = true;
+			
+			if(s!=isValid(email)) {
+				throw new EmailValidationException();
+				
+			}
+			
+			
+			
 			      for(emailvalid=0;emailvalid<=7;emailvalid++) {
-					System.out.println("Enter the email");
+					//System.out.println("Enter the email");
 					email=emp1.next();
 					
 					if(isValid(email) == true) {
@@ -139,30 +156,40 @@ try {
 					else {
 						System.out.println(" invalid");
 					}
+					System.out.println(" Enter your correct email id");
 					}
+			      
 				
  System.out.println("*********COMPLETE YOUR DETAILS************ ");
 				
+				
 				list.add(new EmployeeDetails(name,eid,phoneno,salary,permanentaddress,currentaddress,email));
 				break;
-			}
-					catch(InputMismatchException e) {
-	System.out.println("Your salary format is mismatch");
-}
-				
+		     }
+		     catch(EmailValidationException e) {
+		    	 e.printStackTrace();
+		     }
+
+				break;
 				
 			case 2:
 				 found=false;
 				System.out.println("Delete  Employee Id");
 				
-			    eid =emp1.nextLine();
+			 String   eid1 =emp1.nextLine();
+			 
 			
 				Iterator iterator=list.iterator();
 				
 				while(iterator.hasNext()) {
+			
 				
 					EmployeeDetails employee=(EmployeeDetails) iterator.next();
-					if(employee.getId()==eid) {
+					
+					System.out.println("=============");
+					System.out.println(employee.getId());
+					if(employee.getId()==eid1) {
+				
 				
 						iterator.remove();
 						found=true;
@@ -246,8 +273,25 @@ try {
 					}
 						
 					}
+				
+				
+				System.out.println("Update Salary");
+				int newsalary=emp1.nextInt();
+				emp1.nextLine();
+			
+				if(newsalary<=10000) {
+					System.out.println(newsalary+"not tax");
+				}
+				else if(newsalary>10000&&newsalary<=10000) {
+					tax=newsalary*0.10;
+					System.out.println(newsalary+"Taxamount:"+tax);
+				}
+				else {
+					tax=newsalary*0.20;
+					System.out.println(newsalary+" "+tax);
+				}
 				if(!found) {
-					System.out.println("NOT FOUND");
+					System.out.println("FOUND");
 				}
 				else {
 					System.out.println("EMPLOYEE DETAILS UPDATED!!!");
